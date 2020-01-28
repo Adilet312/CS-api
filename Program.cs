@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace TravelAPI.Solutions
+namespace TravelAPI.Solution
 {
     public class Program
     {

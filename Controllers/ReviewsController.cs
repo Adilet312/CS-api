@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using TravelAPI.Models;
@@ -16,50 +17,47 @@ namespace Reviews.Controllers
     {
       _db = db;
     }
-
-    // GET api/Review
     [HttpGet]
-    public ActionResult<IEnumerable<Review>> Get(string country, string city, int rating, string reviewDescription)
+    public ActionResult<IEnumerable<Review>> Get(string country,string city, int rating, string reviewDescription) 
     {
+      
+      string ratingStr = rating.ToString(); 
+    
       var query = _db.Reviews.AsQueryable();
-
-      if (country != null)
+      if(country!=null)
       {
-        query = query.Where(entry => entry.Country == country);
+        query = query.Where(entry => entry.Country==country);
       }
-
-      if (city != null)
+      else if(city!=null)
       {
-        query = query.Where(entry => entry.City == city);
+        query = query.Where(entry => entry.City==city);
       }
-
-      if (rating != null)
+      else if(ratingStr!=null)
       {
-        query = query.Where(entry => entry.Rating == rating);
+        query = query.Where(entry => entry.Rating==rating);
       }
-
-      if (reviewDescription != null)
+      else if(reviewDescription!=null)
       {
-        query = query.Where(entry => entry.ReviewDescription == reviewDescription);
+        query = query.Where(entry => entry.ReviewDescription==reviewDescription);
       }
-
+    
       return query.ToList();
     }
 
-    // POST api/Review
     [HttpPost]
     public void Post([FromBody] Review review)
     {
       _db.Reviews.Add(review);
       _db.SaveChanges();
     }
-
-    // GET api/Review/5
     [HttpGet("{id}")]
-    public ActionResult<Review> Get(int id)
+    public ActionResult<Review> Get(int id) 
     {
-      return _db.Reviews.FirstOrDefault(entry => entry.ReviewId == id);
+      var foundReview = _db.Reviews.FirstOrDefault(row =>row.ReviewId==id);
+    
+      return foundReview;
     }
+
 
     // PUT api/Review/5
     [HttpPut("{id}")]
@@ -80,3 +78,50 @@ namespace Reviews.Controllers
     }
   }
 }
+
+
+    // [HttpGet]
+    // public ActionResult<Review> Get(int id) 
+    // {
+    //   Review foundReview = _db.Reviews.FirstOrDefault(row =>row.ReviewId==id);
+    
+    //   return foundReview;
+    // }
+
+    //  [HttpGet]
+    // public ActionResult <Review> Country (string country) 
+    // {
+      
+    //   Review review = _db.Reviews.FirstOrDefault(row => row.Country==country);
+    //   return review; 
+    // }
+    // GET api/Review
+    // [HttpGet]
+    // public ActionResult<IEnumerable<Review>> Get(string country, string city, int rating, string reviewDescription)
+    // {
+    //   var query = _db.Reviews.AsQueryable();
+
+    //   if (country != null)
+    //   {
+    //     query = query.Where(entry => entry.Country == country);
+    //   }
+
+    //   if (city != null)
+    //   {
+    //     query = query.Where(entry => entry.City == city);
+    //   }
+
+    //   if (rating != null)
+    //   {
+    //     query = query.Where(entry => entry.Rating == rating);
+    //   }
+
+    //   if (reviewDescription != null)
+    //   {
+    //     query = query.Where(entry => entry.ReviewDescription == reviewDescription);
+    //   }
+
+    //   return query.ToList();
+    // }
+
+    // POST api/Review

@@ -12161,11 +12161,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Guest/Desktop/TravelAPI.Solutions/TravelAPI.Solutions.csproj",
+      "projectUniqueName": "/Users/Guest/Desktop/CS-Tavel-API/TravelAPI.Solutions.csproj",
       "projectName": "TravelAPI.Solutions",
-      "projectPath": "/Users/Guest/Desktop/TravelAPI.Solutions/TravelAPI.Solutions.csproj",
+      "projectPath": "/Users/Guest/Desktop/CS-Tavel-API/TravelAPI.Solutions.csproj",
       "packagesPath": "/Users/Guest/.nuget/packages/",
-      "outputPath": "/Users/Guest/Desktop/TravelAPI.Solutions/obj/",
+      "outputPath": "/Users/Guest/Desktop/CS-Tavel-API/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

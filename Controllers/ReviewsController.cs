@@ -21,22 +21,22 @@ namespace Reviews.Controllers
     public ActionResult<IEnumerable<Review>> Get(string country,string city, int rating, string reviewDescription) 
     {
       
-      string ratingStr = rating.ToString(); 
+      // string ratingStr = rating.ToString(); 
     
       var query = _db.Reviews.AsQueryable();
       if(country!=null)
       {
         query = query.Where(entry => entry.Country==country);
       }
-      else if(city!=null)
+      if(city!=null)
       {
         query = query.Where(entry => entry.City==city);
       }
-      else if(ratingStr!=null)
+      if(rating != 0)
       {
         query = query.Where(entry => entry.Rating==rating);
       }
-      else if(reviewDescription!=null)
+      if(reviewDescription!=null)
       {
         query = query.Where(entry => entry.ReviewDescription==reviewDescription);
       }
@@ -80,48 +80,4 @@ namespace Reviews.Controllers
 }
 
 
-    // [HttpGet]
-    // public ActionResult<Review> Get(int id) 
-    // {
-    //   Review foundReview = _db.Reviews.FirstOrDefault(row =>row.ReviewId==id);
-    
-    //   return foundReview;
-    // }
-
-    //  [HttpGet]
-    // public ActionResult <Review> Country (string country) 
-    // {
-      
-    //   Review review = _db.Reviews.FirstOrDefault(row => row.Country==country);
-    //   return review; 
-    // }
-    // GET api/Review
-    // [HttpGet]
-    // public ActionResult<IEnumerable<Review>> Get(string country, string city, int rating, string reviewDescription)
-    // {
-    //   var query = _db.Reviews.AsQueryable();
-
-    //   if (country != null)
-    //   {
-    //     query = query.Where(entry => entry.Country == country);
-    //   }
-
-    //   if (city != null)
-    //   {
-    //     query = query.Where(entry => entry.City == city);
-    //   }
-
-    //   if (rating != null)
-    //   {
-    //     query = query.Where(entry => entry.Rating == rating);
-    //   }
-
-    //   if (reviewDescription != null)
-    //   {
-    //     query = query.Where(entry => entry.ReviewDescription == reviewDescription);
-    //   }
-
-    //   return query.ToList();
-    // }
-
-    // POST api/Review
+   
